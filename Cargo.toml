@@ -1,0 +1,3 @@
+[workspace]
+members = [ "daemon", "disciplines", "transports"]
+resolver = "2"
