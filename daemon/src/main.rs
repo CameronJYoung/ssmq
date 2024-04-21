@@ -1,6 +1,4 @@
 use std::sync::Arc;
-use daemonize::Daemonize;
-use std::fs::File;
 
 use crate::interface::cli_server::CliServer;
 use crate::system::setup_daemon::setup_daemon;
@@ -18,8 +16,9 @@ async fn main() {
     let cli_server_handle = {
         let cli_server = Arc::clone(&cli_server);
         tokio::spawn(async move {
-            if let Err(e) = cli_server.start().await {
-                eprintln!("Failed to start CLI server: {}", e);
+            match cli_server.start().await {
+                Ok(_) => println!("CLI server started successfully"),
+                Err(e) => eprintln!("Failed to start CLI server: {}", e)
             }
         })
     };
