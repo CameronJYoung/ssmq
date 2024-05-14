@@ -2,7 +2,7 @@ install:
     ./scripts/install.bash
 
 uninstall:
-    sudo scripts/uninstall.bash
+    ./scripts/uninstall.bash
 
 reinstall:
     ./scripts/uninstall.bash

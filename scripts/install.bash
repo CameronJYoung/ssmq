@@ -1,5 +1,7 @@
 mkdir /var/lib/ssmq # This will create the directory for the daemon
 
+mkdir /var/log/ssmq # This will create the log directory for the daemon
+
 cargo build --release # This will build the application binaries (daemon, cli)
 
 sudo useradd -r -s /bin/false ssmquser # Create the ssmquser user
