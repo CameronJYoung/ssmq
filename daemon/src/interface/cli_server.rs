@@ -27,13 +27,12 @@ impl CliServer {
     pub async fn start(&self) -> Result<(), Box<dyn Error>> {
         println!("Starting CLI Server on {}:{}", self.address, self.port);
         let listener = TcpListener::bind(format!("{}:{}", self.address, self.port)).await?;
-        println!("CLI Server running on {}:{}", self.address, self.port);
+        println!("CLI Server running!");
 
         while !self.should_stop.load(Ordering::SeqCst) {
-            println!("Waiting for a new connection...");
+            println!("Waiting for a connection...");
             tokio::select! {
             Ok((stream, _)) = listener.accept() => {
-                println!("Hello");
                 let stop_clone = self.should_stop.clone();
                 let stopped_clone = self.notify_stopped.clone();
                 tokio::spawn(async move {
@@ -73,11 +72,11 @@ impl CliServer {
                     println!("Received: {}", received.trim());
                     match received.trim() {
                         "status" => {
-                            let response = "Daemon is running\n";
+                            let response = "Daemon is running";
                             stream.write_all(response.as_bytes()).await?;
                         },
                         _ => {
-                            let response = "Unknown command\n";
+                            let response = "Unknown command";
                             stream.write_all(response.as_bytes()).await?;
                         },
                     }
