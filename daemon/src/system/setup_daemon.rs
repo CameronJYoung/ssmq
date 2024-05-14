@@ -4,14 +4,14 @@ use daemonize::Daemonize;
 pub fn setup_daemon() {
     println!("Starting SSMQ daemon...");
 
-    let log_file = File::create("/var/log/ssmq.log").unwrap();
+    let log_file = File::create("/var/log/ssmq/ssmq.log").unwrap();
     let err_log_file = log_file.try_clone().expect("Unable to clone log file for stderr");
 
     let daemonize = Daemonize::new()
-        .pid_file("/var/run/ssmq.pid")
+        .pid_file("/var/run/ssmq/ssmq.pid")
         .chown_pid_file(true)
         .working_directory("/var/lib/ssmq")
-        .user("nobody")
+        .user("ssmquser")
         .group("daemon")
         .stdout(log_file)
         .stderr(err_log_file);
