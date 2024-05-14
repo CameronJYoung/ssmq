@@ -1,5 +1,5 @@
 # Stop the daemon
-kill $(cat /var/run/ssmq/ssmq.pid)
+kill "$(cat /var/run/ssmq/ssmq.pid)"
 
 # Remove the daemon and CLI binaries
 rm -f /usr/local/sbin/ssmq-daemon
