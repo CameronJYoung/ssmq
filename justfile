@@ -5,5 +5,5 @@ uninstall:
     ./scripts/uninstall.bash
 
 reinstall:
-    ./scripts/uninstall.bash
-    ./scripts/install.bash
+    just uninstall
+    just install
