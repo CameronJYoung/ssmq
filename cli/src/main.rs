@@ -31,11 +31,11 @@ fn cli() -> Command {
         .allow_external_subcommands(true)
         .subcommand(
             Command::new("start")
-                .about("Starts the SSMQ daemon")
+                .about("Starts the SSMQ daemon (WIP)")
         )
         .subcommand(
             Command::new("stop")
-                .about("Stops the SSMQ daemon")
+                .about("Stops the SSMQ daemon (WIP)")
         )
         .subcommand(
             Command::new("status")
