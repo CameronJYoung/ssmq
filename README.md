@@ -62,8 +62,7 @@ the static configuration.
 ## Message Guarantee
 
 For the moment the only guarantee that will be provided is that the message will be sent. There will be no guarantee that
-the message will be received. This will be a feature that will be added in future. In future, we will add an acknowledgement
-system to ensure that messages are received.
+the message will be received. In future, we will add an acknowledgement system to ensure that messages are received.
 
 ## Configuration
 
@@ -79,7 +78,6 @@ The daemon.toml file will contain the following:
 
 ```toml
 [daemon]
-log_file = "ssmq.log" # The log file to log to
 log_metrics = true # Log metrics to the log file
 log_messages = true # Log messages to the log file
 ```
@@ -101,7 +99,7 @@ discipline = "FIFO" # The discipline this topic uses (FIFO, LIFO, Random)
 The daemon will be started by running the following command:
 
 ```bash
-$ ssmq start
+$ ssmq-cli start
 ```
 
 The daemon will read the configuration files and start the transports and topics. The daemon will then be ready to send
@@ -110,14 +108,15 @@ and receive messages. The daemon will log messages and metrics to the log file s
 The daemon can be stopped by running the following command:
 
 ```bash
-$ ssmq stop
+$ ssmq-cli stop
 ```
 
 You can check the status of the daemon by running the following command:
 
 ```bash
-$ ssmq status
+$ ssmq-cli status
 ```
+
 
 ## Installation
 
@@ -160,4 +159,3 @@ $ rm /usr/local/bin/ssmq-cli # This will remove the cli
 
 $ source ~/.bashrc # This will refresh the bash profile
 ```
-
