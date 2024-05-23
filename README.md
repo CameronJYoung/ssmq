@@ -1,5 +1,7 @@
 # Super Simple Messaging Queue (SSMQ)
 
+THIS IS A WORK IN PROGRESS, A LOT OF THE FUNCTIONALITY DESCRIBED BELOW IS NOT YET IMPLEMNETED 
+
 SSMQ is my attempt to create a simple messaging queue that can be used to send messages from and to different transports.
 It will follow a topic based approach where messages are sent to a topic and then received by a subscriber. Currently, the
 application will only run on Unix based systems. This project is no way meant to be used in production. It is a learning
