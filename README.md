@@ -2,10 +2,10 @@
 
 THIS IS A WORK IN PROGRESS, A LOT OF THE FUNCTIONALITY DESCRIBED BELOW IS NOT YET IMPLEMENTED 
 
-SSMQ is my attempt to create a simple messaging queue that can be used to send messages from and to different transports.
+SSMQ is my attempt to create a simple messaging queue that can be used to send messages to and from different transports.
 It will follow a topic based approach where messages are sent to a topic and then received by a subscriber. Currently, the
 application will only run on Unix based systems. This project is no way meant to be used in production. It is a learning
-project for me to understand messaging queues more deaply.
+project for me to understand messaging queues more deeply.
 
 ## Features
 
@@ -51,6 +51,7 @@ implemented are:
 
 - FIFO (First In First Out)
 - LIFO (Last In First Out)
+- Standard
 - Random
 
 Disciplines are contained within the Discipline cargo module. Each discipline will have a queue and dequeue function that
@@ -119,45 +120,7 @@ You can check the status of the daemon by running the following command:
 $ ssmq-cli status
 ```
 
-
 ## Installation
 
-Currently, the daemon can be installed from source using the following script:
-
-```bash
-$ mkdir /var/lib/ssmq # This will create the directory for the daemon
-
-$ cargo build --release # This will build the application binaries (daemon, cli)
-
-$ cp target/release/daemon /usr/local/sbin/ssmq-daemon # This will copy the daemon to the sbin directory
-
-$ chmod +x /usr/local/sbin/ssmq-daemon # This will make the daemon executable
-
-$ /usr/local/sbin/ssmq-daemon # This will start the daemon
-
-$ cp target/release/cli /usr/local/bin/ssmq-cli # This will copy the cli to the bin directory
-
-$ chmod +x /usr/local/bin/ssmq-cli # This will make the cli executable
-
-$ source ~/.bashrc # This will refresh the bash profile
-```
-
-## Uninstall
-
-The daemon can be uninstalled using the following script:
-
-```bash
-$ kill -SIGTERM $(cat /var/run/ssmq.pid) # This will stop the daemon
-
-$ rm /usr/local/sbin/ssmq-daemon # This will remove the daemon
-
-$ rm -rf /var/lib/ssmq # This will remove the daemon directory
-
-$ rm /var/run/ssmq.pid # This will remove the daemon pid file
-
-$ rm /var/log/ssmq.log # This will remove the daemon log file
-
-$ rm /usr/local/bin/ssmq-cli # This will remove the cli
-
-$ source ~/.bashrc # This will refresh the bash profile
-```
+Currently the only way to install SSMQ is via the install script in the scripts folder. In future we will create a script 
+to actually package SSMQ for an easier installation. You can uninstall SSMQ using the uninstall script.
